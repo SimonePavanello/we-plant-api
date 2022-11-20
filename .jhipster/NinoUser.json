@@ -1,0 +1,30 @@
+{
+    "name": "NinoUser",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "ninoUser"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "administeredEventsAndLocations",
+            "otherEntityName": "eventAndLocation",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "adminUsers"
+        }
+    ],
+    "changelogDate": "20190520082843",
+    "entityTableName": "nino_user",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

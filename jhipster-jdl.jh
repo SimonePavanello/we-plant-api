@@ -1,0 +1,177 @@
+
+DEFAULT_MAX_LENGTH = 20000
+VERY_LARGE_LENGTH = 200000
+
+entity Albero{
+    entityid Long,
+    idPianta Integer,
+    codiceArea Integer,
+    nomeComune String,
+    classeAltezza Integer,
+    altezza Double,
+    diametroFusto Integer,
+    diametro Double,
+    wkt String,
+    aggiornamento String,
+    nota String,
+    tipoDiSuolo TipoDiSuolo,
+    dataImpianto ZonedDateTime,
+    dataAbbattimento ZonedDateTime,
+    dataUltimoAggiornamento ZonedDateTime,
+    dataPrimaRilevazione ZonedDateTime,
+    noteTecniche String,
+    posizione String,
+    deleted Boolean
+}
+
+
+entity AlberoVisit{
+    visitTime ZonedDateTime
+}
+
+entity Email {
+	from String,
+	to String,
+    date ZonedDateTime,
+    sesMessageId String,
+    status EmailStatus,
+    htmlBody String maxlength (DEFAULT_MAX_LENGTH),
+  	textBody String maxlength (DEFAULT_MAX_LENGTH),
+	subject String
+}
+
+entity Essenza{
+    idComune Long required,
+    tipoVerde String,
+    genereESpecie String,
+    nomeComune String,
+    valoreSicurezza String,
+    valoreBioAmbientale String,
+    provenienza String,
+    descrizione String maxlength(DEFAULT_MAX_LENGTH),
+    usieCuriosita String maxlength(DEFAULT_MAX_LENGTH),
+    genere String,
+    specie String
+}
+
+entity EssenzaAudit{
+    idComune Long required,
+    tipoVerde String,
+    genereESpecie String,
+    nomeComune String,
+    valoreSicurezza String,
+    valoreBioAmbientale String,
+    provenienza String,
+    descrizione String maxlength(DEFAULT_MAX_LENGTH),
+    usieCuriosita String maxlength(DEFAULT_MAX_LENGTH),
+    genere String,
+    specie String,
+    dataUltimoAggiornamento ZonedDateTime
+}
+
+entity Image{
+    createDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    name String,
+    format String,
+    location String,
+    imagePath String maxlength (DEFAULT_MAX_LENGTH),
+    thumbnailPath String maxlength (DEFAULT_MAX_LENGTH),
+}
+
+entity EventAndLocation{
+     name String
+}
+
+entity NinoUser{
+
+}
+
+entity Poi{
+    poiId String,
+    name String
+}
+
+entity Privacy{
+    time ZonedDateTime,
+    privacy Boolean
+}
+
+entity Visit{
+	lastLat BigDecimal,
+    lastLon BigDecimal,
+    exitPoiId String,
+    maxVisitTime Long,
+    startTime ZonedDateTime,
+    createdDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    maxVisitLengthMeters Double,
+    active Boolean,
+    inProgress Boolean,
+    difficulty VisitDifficulty
+}
+
+entity Stop{
+	poiId String,
+    reached Boolean required,
+    startTime ZonedDateTime,
+    endTime ZonedDateTime,
+    stopType StopType required,
+    lat BigDecimal,
+    lon BigDecimal
+}
+
+enum StopType{
+    REGULAR, URGENT, SECONDARY, MY_POSITION
+}
+
+enum VisitDifficulty{
+	LOW, MEDIUM, NO_LIMIT
+}
+
+enum EntityType{
+    ALBERO
+}
+
+
+enum EmailStatus {
+	SUCCESS, FAILED
+}
+
+enum TipoDiSuolo{
+	AREA_VERDE, ZANELLA, AIUOLA
+}
+relationship OneToMany {
+    Visit{stops} to Stop{visit}
+}
+
+relationship ManyToOne {
+    Visit{user} to User
+    Albero{essenza(nomeComune)} to Essenza
+    EssenzaAudit{essenza} to Essenza
+    EssenzaAudit{modificatoDa(email)} to User
+    Albero{modificatoDa(email)} to User
+    Image{albero(nomeComune)} to Albero
+    Image{poi(name)} to Poi
+    Visit{eventAndlocation} to EventAndLocation
+    Albero{main} to Albero
+    AlberoVisit{user} to User
+    AlberoVisit{albero} to Albero
+    Privacy{user} to User
+    Image{cratedBy} to User
+
+}
+
+relationship ManyToMany{
+    EventAndLocation{adminUsers} to NinoUser{administeredEventsAndLocations}
+    EventAndLocation{pois} to Poi{eventsAndlocations}
+
+}
+relationship OneToOne {
+    Visit{startPoint} to Stop,
+    Visit{endPoint} to Stop,
+    NinoUser{user} to User
+}
+
+service all with serviceClass
+dto * with mapstruct

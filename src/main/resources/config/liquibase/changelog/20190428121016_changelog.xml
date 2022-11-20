@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+    <!--
+        Import data provided by the municipality of Verona
+    -->
+    <changeSet id="20190428121116-1" author="dawit">
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/essenze.csv"
+                  separator=";"
+                  tableName="essenza"/>
+    </changeSet>
+
+    <changeSet id="20190428121116-2" author="dawit">
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/alberi_comune.csv"
+                  separator=";"
+                  tableName="albero"/>
+    </changeSet>
+</databaseChangeLog>

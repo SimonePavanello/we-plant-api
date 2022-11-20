@@ -1,0 +1,87 @@
+{
+    "name": "EssenzaAudit",
+    "fields": [
+        {
+            "fieldName": "idComune",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipoVerde",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "genereESpecie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nomeComune",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valoreSicurezza",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valoreBioAmbientale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "provenienza",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descrizione",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20000
+        },
+        {
+            "fieldName": "usieCuriosita",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20000
+        },
+        {
+            "fieldName": "genere",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "specie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataUltimoAggiornamento",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "essenza",
+            "otherEntityName": "essenza",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "modificatoDa",
+            "otherEntityName": "user",
+            "otherEntityField": "email"
+        }
+    ],
+    "changelogDate": "20190511123229",
+    "entityTableName": "essenza_audit",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

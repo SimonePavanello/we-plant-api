@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="email">
+            <h2><span>Email</span> {{email.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>From</span></dt>
+                <dd>
+                    <span>{{email.from}}</span>
+                </dd>
+                <dt><span>To</span></dt>
+                <dd>
+                    <span>{{email.to}}</span>
+                </dd>
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{email.date}}</span>
+                </dd>
+                <dt><span>Ses Message Id</span></dt>
+                <dd>
+                    <span>{{email.sesMessageId}}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{email.status}}</span>
+                </dd>
+                <dt><span>Html Body</span></dt>
+                <dd>
+                    <span>{{email.htmlBody}}</span>
+                </dd>
+                <dt><span>Text Body</span></dt>
+                <dd>
+                    <span>{{email.textBody}}</span>
+                </dd>
+                <dt><span>Subject</span></dt>
+                <dd>
+                    <span>{{email.subject}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/email', email.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

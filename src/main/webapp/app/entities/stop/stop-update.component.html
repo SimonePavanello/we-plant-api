@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-stop-heading">Create or edit a Stop</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!stop.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="stop.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_poiId">Poi Id</label>
+                    <input type="text" class="form-control" name="poiId" id="field_poiId"
+                        [(ngModel)]="stop.poiId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reached">Reached</label>
+                    <input type="checkbox" class="form-control" name="reached" id="field_reached"
+                        [(ngModel)]="stop.reached" />
+                    <div [hidden]="!(editForm.controls.reached?.dirty && editForm.controls.reached?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.reached?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_startTime">Start Time</label>
+                    <div class="d-flex">
+                        <input id="field_startTime" type="datetime-local" class="form-control" name="startTime" [(ngModel)]="startTime"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_endTime">End Time</label>
+                    <div class="d-flex">
+                        <input id="field_endTime" type="datetime-local" class="form-control" name="endTime" [(ngModel)]="endTime"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stopType">Stop Type</label>
+                    <select class="form-control" name="stopType" [(ngModel)]="stop.stopType" id="field_stopType"  required>
+                        <option value="REGULAR">REGULAR</option>
+                        <option value="URGENT">URGENT</option>
+                        <option value="SECONDARY">SECONDARY</option>
+                        <option value="MY_POSITION">MY_POSITION</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.stopType?.dirty && editForm.controls.stopType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.stopType?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lat">Lat</label>
+                    <input type="number" class="form-control" name="lat" id="field_lat"
+                        [(ngModel)]="stop.lat" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lon">Lon</label>
+                    <input type="number" class="form-control" name="lon" id="field_lon"
+                        [(ngModel)]="stop.lon" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_visit">Visit</label>
+                    <select class="form-control" id="field_visit" name="visit" [(ngModel)]="stop.visitId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="visitOption.id" *ngFor="let visitOption of visits; trackBy: trackVisitById">{{visitOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

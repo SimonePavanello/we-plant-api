@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="essenzaAudit">
+            <h2><span>Essenza Audit</span> {{essenzaAudit.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Id Comune</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.idComune}}</span>
+                </dd>
+                <dt><span>Tipo Verde</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.tipoVerde}}</span>
+                </dd>
+                <dt><span>Genere E Specie</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.genereESpecie}}</span>
+                </dd>
+                <dt><span>Nome Comune</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.nomeComune}}</span>
+                </dd>
+                <dt><span>Valore Sicurezza</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.valoreSicurezza}}</span>
+                </dd>
+                <dt><span>Valore Bio Ambientale</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.valoreBioAmbientale}}</span>
+                </dd>
+                <dt><span>Provenienza</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.provenienza}}</span>
+                </dd>
+                <dt><span>Descrizione</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.descrizione}}</span>
+                </dd>
+                <dt><span>Usie Curiosita</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.usieCuriosita}}</span>
+                </dd>
+                <dt><span>Genere</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.genere}}</span>
+                </dd>
+                <dt><span>Specie</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.specie}}</span>
+                </dd>
+                <dt><span>Data Ultimo Aggiornamento</span></dt>
+                <dd>
+                    <span>{{essenzaAudit.dataUltimoAggiornamento}}</span>
+                </dd>
+                <dt><span>Essenza</span></dt>
+                <dd>
+                    <div *ngIf="essenzaAudit.essenzaId">
+                        <a [routerLink]="['/essenza', essenzaAudit.essenzaId, 'view']">{{essenzaAudit.essenzaId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Modificato Da</span></dt>
+                <dd>
+                    {{essenzaAudit.modificatoDaEmail}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/essenza-audit', essenzaAudit.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

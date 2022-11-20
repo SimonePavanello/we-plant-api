@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-essenza-heading">Create or edit a Essenza</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!essenza.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="essenza.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idComune">Id Comune</label>
+                    <input type="number" class="form-control" name="idComune" id="field_idComune"
+                        [(ngModel)]="essenza.idComune" required/>
+                    <div [hidden]="!(editForm.controls.idComune?.dirty && editForm.controls.idComune?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.idComune?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.idComune?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoVerde">Tipo Verde</label>
+                    <input type="text" class="form-control" name="tipoVerde" id="field_tipoVerde"
+                        [(ngModel)]="essenza.tipoVerde" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_genereESpecie">Genere E Specie</label>
+                    <input type="text" class="form-control" name="genereESpecie" id="field_genereESpecie"
+                        [(ngModel)]="essenza.genereESpecie" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nomeComune">Nome Comune</label>
+                    <input type="text" class="form-control" name="nomeComune" id="field_nomeComune"
+                        [(ngModel)]="essenza.nomeComune" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valoreSicurezza">Valore Sicurezza</label>
+                    <input type="text" class="form-control" name="valoreSicurezza" id="field_valoreSicurezza"
+                        [(ngModel)]="essenza.valoreSicurezza" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valoreBioAmbientale">Valore Bio Ambientale</label>
+                    <input type="text" class="form-control" name="valoreBioAmbientale" id="field_valoreBioAmbientale"
+                        [(ngModel)]="essenza.valoreBioAmbientale" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_provenienza">Provenienza</label>
+                    <input type="text" class="form-control" name="provenienza" id="field_provenienza"
+                        [(ngModel)]="essenza.provenienza" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descrizione">Descrizione</label>
+                    <input type="text" class="form-control" name="descrizione" id="field_descrizione"
+                        [(ngModel)]="essenza.descrizione" maxlength="20000"/>
+                    <div [hidden]="!(editForm.controls.descrizione?.dirty && editForm.controls.descrizione?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.descrizione?.errors?.maxlength">
+                        This field cannot be longer than 20000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_usieCuriosita">Usie Curiosita</label>
+                    <input type="text" class="form-control" name="usieCuriosita" id="field_usieCuriosita"
+                        [(ngModel)]="essenza.usieCuriosita" maxlength="20000"/>
+                    <div [hidden]="!(editForm.controls.usieCuriosita?.dirty && editForm.controls.usieCuriosita?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.usieCuriosita?.errors?.maxlength">
+                        This field cannot be longer than 20000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_genere">Genere</label>
+                    <input type="text" class="form-control" name="genere" id="field_genere"
+                        [(ngModel)]="essenza.genere" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_specie">Specie</label>
+                    <input type="text" class="form-control" name="specie" id="field_specie"
+                        [(ngModel)]="essenza.specie" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

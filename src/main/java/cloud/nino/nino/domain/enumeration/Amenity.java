@@ -1,0 +1,46 @@
+package cloud.nino.nino.domain.enumeration;
+
+/**
+ * The StopType enumeration.
+ */
+public enum Amenity {
+    restaurant,
+    cafe,
+    vending_machine,
+    bench,
+    waste_basket,
+    bar,
+    drinking_water,
+    pharmacy,
+    bicycle_parking,
+    fast_food,
+    bank,
+    ice_cream,
+    parking,
+    bicycle_rental,
+    school,
+    toilets,
+    pub,
+    telephone,
+    post_office,
+    atm,
+    recycling,
+    fuel,
+    bureau_de_change,
+    cinema,
+    embassy,
+    library,
+    motorcycle_parking,
+    place_of_worship,
+    charging_station,
+    clock,
+    college,
+    dentist,
+    doctors,
+    hospital,
+    kindergarten,
+    nightclub,
+    parking_entrance,
+    shelter,
+    taxi
+}

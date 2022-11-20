@@ -1,0 +1,111 @@
+{
+    "name": "Albero",
+    "fields": [
+        {
+            "fieldName": "entityid",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "idPianta",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "codiceArea",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nomeComune",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "classeAltezza",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "altezza",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "diametroFusto",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "diametro",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "wkt",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "aggiornamento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nota",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipoDiSuolo",
+            "fieldType": "TipoDiSuolo",
+            "fieldValues": "AREA_VERDE,ZANELLA,AIUOLA"
+        },
+        {
+            "fieldName": "dataImpianto",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dataAbbattimento",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dataUltimoAggiornamento",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dataPrimaRilevazione",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "noteTecniche",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "posizione",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "essenza",
+            "otherEntityName": "essenza",
+            "otherEntityField": "nomeComune"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "modificatoDa",
+            "otherEntityName": "user",
+            "otherEntityField": "email"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "main",
+            "otherEntityName": "albero",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190428094708",
+    "entityTableName": "albero",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

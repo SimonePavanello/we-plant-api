@@ -1,0 +1,86 @@
+<div>
+    <h2 id="page-heading">
+        <span>Essenza Audits</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-essenza-audit" [routerLink]="['/essenza-audit/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Essenza Audit
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="essenzaAudits">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Id Comune</span></th>
+            <th><span>Tipo Verde</span></th>
+            <th><span>Genere E Specie</span></th>
+            <th><span>Nome Comune</span></th>
+            <th><span>Valore Sicurezza</span></th>
+            <th><span>Valore Bio Ambientale</span></th>
+            <th><span>Provenienza</span></th>
+            <th><span>Descrizione</span></th>
+            <th><span>Usie Curiosita</span></th>
+            <th><span>Genere</span></th>
+            <th><span>Specie</span></th>
+            <th><span>Data Ultimo Aggiornamento</span></th>
+            <th><span>Essenza</span></th>
+            <th><span>Modificato Da</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let essenzaAudit of essenzaAudits ;trackBy: trackId">
+                <td><a [routerLink]="['/essenza-audit', essenzaAudit.id, 'view' ]">{{essenzaAudit.id}}</a></td>
+                <td>{{essenzaAudit.idComune}}</td>
+                <td>{{essenzaAudit.tipoVerde}}</td>
+                <td>{{essenzaAudit.genereESpecie}}</td>
+                <td>{{essenzaAudit.nomeComune}}</td>
+                <td>{{essenzaAudit.valoreSicurezza}}</td>
+                <td>{{essenzaAudit.valoreBioAmbientale}}</td>
+                <td>{{essenzaAudit.provenienza}}</td>
+                <td>{{essenzaAudit.descrizione}}</td>
+                <td>{{essenzaAudit.usieCuriosita}}</td>
+                <td>{{essenzaAudit.genere}}</td>
+                <td>{{essenzaAudit.specie}}</td>
+                <td>{{essenzaAudit.dataUltimoAggiornamento | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="essenzaAudit.essenzaId">
+                        <a [routerLink]="['../essenza', essenzaAudit.essenzaId , 'view' ]" >{{essenzaAudit.essenzaId}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{essenzaAudit.modificatoDaEmail}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/essenza-audit', essenzaAudit.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/essenza-audit', essenzaAudit.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'essenza-audit/'+ essenzaAudit.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

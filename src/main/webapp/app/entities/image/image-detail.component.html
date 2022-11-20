@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="image">
+            <h2><span>Image</span> {{image.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Create Date</span></dt>
+                <dd>
+                    <span>{{image.createDate}}</span>
+                </dd>
+                <dt><span>Modified Date</span></dt>
+                <dd>
+                    <span>{{image.modifiedDate}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{image.name}}</span>
+                </dd>
+                <dt><span>Format</span></dt>
+                <dd>
+                    <span>{{image.format}}</span>
+                </dd>
+                <dt><span>Location</span></dt>
+                <dd>
+                    <span>{{image.location}}</span>
+                </dd>
+                <dt><span>Image Path</span></dt>
+                <dd>
+                    <span>{{image.imagePath}}</span>
+                </dd>
+                <dt><span>Thumbnail Path</span></dt>
+                <dd>
+                    <span>{{image.thumbnailPath}}</span>
+                </dd>
+                <dt><span>Albero</span></dt>
+                <dd>
+                    <div *ngIf="image.alberoId">
+                        <a [routerLink]="['/albero', image.alberoId, 'view']">{{image.alberoNomeComune}}</a>
+                    </div>
+                </dd>
+                <dt><span>Poi</span></dt>
+                <dd>
+                    <div *ngIf="image.poiId">
+                        <a [routerLink]="['/poi', image.poiId, 'view']">{{image.poiName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Crated By</span></dt>
+                <dd>
+                    {{image.cratedById}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/image', image.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Albero.
+    -->
+    <changeSet id="20190428094708-1" author="jhipster">
+        <createTable tableName="albero">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="entityid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="id_pianta" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="codice_area" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="nome_comune" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="classe_altezza" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="altezza" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="diametro_fusto" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="diametro" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="wkt" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="aggiornamento" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="nota" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="tipo_di_suolo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_impianto" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_abbattimento" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_ultimo_aggiornamento" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_prima_rilevazione" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="note_tecniche" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="posizione" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="deleted" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="essenza_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="modificato_da_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="main_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="albero" columnName="data_impianto" columnDataType="datetime"/>
+        <dropDefaultValue tableName="albero" columnName="data_abbattimento" columnDataType="datetime"/>
+        <dropDefaultValue tableName="albero" columnName="data_ultimo_aggiornamento" columnDataType="datetime"/>
+        <dropDefaultValue tableName="albero" columnName="data_prima_rilevazione" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

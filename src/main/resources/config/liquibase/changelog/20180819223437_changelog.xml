@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="dawit (generated)" id="1534718085191-1">
+        <addColumn tableName="stop">
+            <column name="visit_id" type="int8"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="dawit (generated)" id="1534718085191-2">
+        <addForeignKeyConstraint baseColumnNames="visit_id" baseTableName="stop" constraintName="FKb7o2tc08jjv1jjgy2divi8ac4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="visit"/>
+    </changeSet>
+    <changeSet author="dawit (generated)" id="1534718085191-3">
+        <dropForeignKeyConstraint baseTableName="stop" constraintName="fk_stop_client_id"/>
+    </changeSet>
+    <changeSet author="dawit (generated)" id="1534718085191-4">
+        <dropColumn columnName="client_id" tableName="stop"/>
+    </changeSet>
+</databaseChangeLog>

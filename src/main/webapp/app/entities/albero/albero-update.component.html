@@ -1,0 +1,151 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-albero-heading">Create or edit a Albero</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!albero.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="albero.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entityid">Entityid</label>
+                    <input type="number" class="form-control" name="entityid" id="field_entityid"
+                        [(ngModel)]="albero.entityid" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idPianta">Id Pianta</label>
+                    <input type="number" class="form-control" name="idPianta" id="field_idPianta"
+                        [(ngModel)]="albero.idPianta" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_codiceArea">Codice Area</label>
+                    <input type="number" class="form-control" name="codiceArea" id="field_codiceArea"
+                        [(ngModel)]="albero.codiceArea" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nomeComune">Nome Comune</label>
+                    <input type="text" class="form-control" name="nomeComune" id="field_nomeComune"
+                        [(ngModel)]="albero.nomeComune" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_classeAltezza">Classe Altezza</label>
+                    <input type="number" class="form-control" name="classeAltezza" id="field_classeAltezza"
+                        [(ngModel)]="albero.classeAltezza" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_altezza">Altezza</label>
+                    <input type="number" class="form-control" name="altezza" id="field_altezza"
+                        [(ngModel)]="albero.altezza" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_diametroFusto">Diametro Fusto</label>
+                    <input type="number" class="form-control" name="diametroFusto" id="field_diametroFusto"
+                        [(ngModel)]="albero.diametroFusto" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_diametro">Diametro</label>
+                    <input type="number" class="form-control" name="diametro" id="field_diametro"
+                        [(ngModel)]="albero.diametro" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_wkt">Wkt</label>
+                    <input type="text" class="form-control" name="wkt" id="field_wkt"
+                        [(ngModel)]="albero.wkt" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_aggiornamento">Aggiornamento</label>
+                    <input type="text" class="form-control" name="aggiornamento" id="field_aggiornamento"
+                        [(ngModel)]="albero.aggiornamento" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nota">Nota</label>
+                    <input type="text" class="form-control" name="nota" id="field_nota"
+                        [(ngModel)]="albero.nota" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoDiSuolo">Tipo Di Suolo</label>
+                    <select class="form-control" name="tipoDiSuolo" [(ngModel)]="albero.tipoDiSuolo" id="field_tipoDiSuolo" >
+                        <option value="AREA_VERDE">AREA_VERDE</option>
+                        <option value="ZANELLA">ZANELLA</option>
+                        <option value="AIUOLA">AIUOLA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dataImpianto">Data Impianto</label>
+                    <div class="d-flex">
+                        <input id="field_dataImpianto" type="datetime-local" class="form-control" name="dataImpianto" [(ngModel)]="dataImpianto"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dataAbbattimento">Data Abbattimento</label>
+                    <div class="d-flex">
+                        <input id="field_dataAbbattimento" type="datetime-local" class="form-control" name="dataAbbattimento" [(ngModel)]="dataAbbattimento"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dataUltimoAggiornamento">Data Ultimo Aggiornamento</label>
+                    <div class="d-flex">
+                        <input id="field_dataUltimoAggiornamento" type="datetime-local" class="form-control" name="dataUltimoAggiornamento" [(ngModel)]="dataUltimoAggiornamento"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dataPrimaRilevazione">Data Prima Rilevazione</label>
+                    <div class="d-flex">
+                        <input id="field_dataPrimaRilevazione" type="datetime-local" class="form-control" name="dataPrimaRilevazione" [(ngModel)]="dataPrimaRilevazione"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_noteTecniche">Note Tecniche</label>
+                    <input type="text" class="form-control" name="noteTecniche" id="field_noteTecniche"
+                        [(ngModel)]="albero.noteTecniche" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_posizione">Posizione</label>
+                    <input type="text" class="form-control" name="posizione" id="field_posizione"
+                        [(ngModel)]="albero.posizione" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deleted">Deleted</label>
+                    <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                        [(ngModel)]="albero.deleted" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_essenza">Essenza</label>
+                    <select class="form-control" id="field_essenza" name="essenza" [(ngModel)]="albero.essenzaId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="essenzaOption.id" *ngFor="let essenzaOption of essenzas; trackBy: trackEssenzaById">{{essenzaOption.nomeComune}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modificatoDa">Modificato Da</label>
+                    <select class="form-control" id="field_modificatoDa" name="modificatoDa" [(ngModel)]="albero.modificatoDaId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.email}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_main">Main</label>
+                    <select class="form-control" id="field_main" name="main" [(ngModel)]="albero.mainId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="alberoOption.id" *ngFor="let alberoOption of alberos; trackBy: trackAlberoById">{{alberoOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

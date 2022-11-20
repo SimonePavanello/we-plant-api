@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span>Images</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-image" [routerLink]="['/image/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Image
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="images">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Create Date</span></th>
+            <th><span>Modified Date</span></th>
+            <th><span>Name</span></th>
+            <th><span>Format</span></th>
+            <th><span>Location</span></th>
+            <th><span>Image Path</span></th>
+            <th><span>Thumbnail Path</span></th>
+            <th><span>Albero</span></th>
+            <th><span>Poi</span></th>
+            <th><span>Crated By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let image of images ;trackBy: trackId">
+                <td><a [routerLink]="['/image', image.id, 'view' ]">{{image.id}}</a></td>
+                <td>{{image.createDate | date:'medium'}}</td>
+                <td>{{image.modifiedDate | date:'medium'}}</td>
+                <td>{{image.name}}</td>
+                <td>{{image.format}}</td>
+                <td>{{image.location}}</td>
+                <td>{{image.imagePath}}</td>
+                <td>{{image.thumbnailPath}}</td>
+                <td>
+                    <div *ngIf="image.alberoId">
+                        <a [routerLink]="['../albero', image.alberoId , 'view' ]" >{{image.alberoNomeComune}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="image.poiId">
+                        <a [routerLink]="['../poi', image.poiId , 'view' ]" >{{image.poiName}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{image.cratedById}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/image', image.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/image', image.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'image/'+ image.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

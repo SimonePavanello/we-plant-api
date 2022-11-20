@@ -1,0 +1,115 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="albero">
+            <h2><span>Albero</span> {{albero.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Entityid</span></dt>
+                <dd>
+                    <span>{{albero.entityid}}</span>
+                </dd>
+                <dt><span>Id Pianta</span></dt>
+                <dd>
+                    <span>{{albero.idPianta}}</span>
+                </dd>
+                <dt><span>Codice Area</span></dt>
+                <dd>
+                    <span>{{albero.codiceArea}}</span>
+                </dd>
+                <dt><span>Nome Comune</span></dt>
+                <dd>
+                    <span>{{albero.nomeComune}}</span>
+                </dd>
+                <dt><span>Classe Altezza</span></dt>
+                <dd>
+                    <span>{{albero.classeAltezza}}</span>
+                </dd>
+                <dt><span>Altezza</span></dt>
+                <dd>
+                    <span>{{albero.altezza}}</span>
+                </dd>
+                <dt><span>Diametro Fusto</span></dt>
+                <dd>
+                    <span>{{albero.diametroFusto}}</span>
+                </dd>
+                <dt><span>Diametro</span></dt>
+                <dd>
+                    <span>{{albero.diametro}}</span>
+                </dd>
+                <dt><span>Wkt</span></dt>
+                <dd>
+                    <span>{{albero.wkt}}</span>
+                </dd>
+                <dt><span>Aggiornamento</span></dt>
+                <dd>
+                    <span>{{albero.aggiornamento}}</span>
+                </dd>
+                <dt><span>Nota</span></dt>
+                <dd>
+                    <span>{{albero.nota}}</span>
+                </dd>
+                <dt><span>Tipo Di Suolo</span></dt>
+                <dd>
+                    <span>{{albero.tipoDiSuolo}}</span>
+                </dd>
+                <dt><span>Data Impianto</span></dt>
+                <dd>
+                    <span>{{albero.dataImpianto}}</span>
+                </dd>
+                <dt><span>Data Abbattimento</span></dt>
+                <dd>
+                    <span>{{albero.dataAbbattimento}}</span>
+                </dd>
+                <dt><span>Data Ultimo Aggiornamento</span></dt>
+                <dd>
+                    <span>{{albero.dataUltimoAggiornamento}}</span>
+                </dd>
+                <dt><span>Data Prima Rilevazione</span></dt>
+                <dd>
+                    <span>{{albero.dataPrimaRilevazione}}</span>
+                </dd>
+                <dt><span>Note Tecniche</span></dt>
+                <dd>
+                    <span>{{albero.noteTecniche}}</span>
+                </dd>
+                <dt><span>Posizione</span></dt>
+                <dd>
+                    <span>{{albero.posizione}}</span>
+                </dd>
+                <dt><span>Deleted</span></dt>
+                <dd>
+                    <span>{{albero.deleted}}</span>
+                </dd>
+                <dt><span>Essenza</span></dt>
+                <dd>
+                    <div *ngIf="albero.essenzaId">
+                        <a [routerLink]="['/essenza', albero.essenzaId, 'view']">{{albero.essenzaNomeComune}}</a>
+                    </div>
+                </dd>
+                <dt><span>Modificato Da</span></dt>
+                <dd>
+                    {{albero.modificatoDaEmail}}
+                </dd>
+                <dt><span>Main</span></dt>
+                <dd>
+                    <div *ngIf="albero.mainId">
+                        <a [routerLink]="['/albero', albero.mainId, 'view']">{{albero.mainId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/albero', albero.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

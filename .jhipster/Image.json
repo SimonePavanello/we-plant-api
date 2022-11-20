@@ -1,0 +1,70 @@
+{
+    "name": "Image",
+    "fields": [
+        {
+            "fieldName": "createDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "modifiedDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "format",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imagePath",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20000
+        },
+        {
+            "fieldName": "thumbnailPath",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20000
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "albero",
+            "otherEntityName": "albero",
+            "otherEntityField": "nomeComune"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "poi",
+            "otherEntityName": "poi",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "cratedBy",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190512125200",
+    "entityTableName": "image",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

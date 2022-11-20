@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="privacy">
+            <h2><span>Privacy</span> {{privacy.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Time</span></dt>
+                <dd>
+                    <span>{{privacy.time}}</span>
+                </dd>
+                <dt><span>Privacy</span></dt>
+                <dd>
+                    <span>{{privacy.privacy}}</span>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{privacy.userId}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/privacy', privacy.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+version: '3'
+services:
+    nino-apache:
+        image: httpd-proxy:latest
+        volumes:
+             - ~/apache-we-plant/apacheconf/sites:/usr/local/apache2/conf/sites
+        ports:
+            - 80:80

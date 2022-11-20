@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-image-heading">Create or edit a Image</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!image.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="image.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createDate">Create Date</label>
+                    <div class="d-flex">
+                        <input id="field_createDate" type="datetime-local" class="form-control" name="createDate" [(ngModel)]="createDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modifiedDate">Modified Date</label>
+                    <div class="d-flex">
+                        <input id="field_modifiedDate" type="datetime-local" class="form-control" name="modifiedDate" [(ngModel)]="modifiedDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="image.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_format">Format</label>
+                    <input type="text" class="form-control" name="format" id="field_format"
+                        [(ngModel)]="image.format" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_location">Location</label>
+                    <input type="text" class="form-control" name="location" id="field_location"
+                        [(ngModel)]="image.location" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_imagePath">Image Path</label>
+                    <input type="text" class="form-control" name="imagePath" id="field_imagePath"
+                        [(ngModel)]="image.imagePath" maxlength="20000"/>
+                    <div [hidden]="!(editForm.controls.imagePath?.dirty && editForm.controls.imagePath?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.imagePath?.errors?.maxlength">
+                        This field cannot be longer than 20000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_thumbnailPath">Thumbnail Path</label>
+                    <input type="text" class="form-control" name="thumbnailPath" id="field_thumbnailPath"
+                        [(ngModel)]="image.thumbnailPath" maxlength="20000"/>
+                    <div [hidden]="!(editForm.controls.thumbnailPath?.dirty && editForm.controls.thumbnailPath?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.thumbnailPath?.errors?.maxlength">
+                        This field cannot be longer than 20000 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_albero">Albero</label>
+                    <select class="form-control" id="field_albero" name="albero" [(ngModel)]="image.alberoId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="alberoOption.id" *ngFor="let alberoOption of alberos; trackBy: trackAlberoById">{{alberoOption.nomeComune}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_poi">Poi</label>
+                    <select class="form-control" id="field_poi" name="poi" [(ngModel)]="image.poiId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="poiOption.id" *ngFor="let poiOption of pois; trackBy: trackPoiById">{{poiOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cratedBy">Crated By</label>
+                    <select class="form-control" id="field_cratedBy" name="cratedBy" [(ngModel)]="image.cratedById" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

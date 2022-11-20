@@ -1,0 +1,106 @@
+<div>
+    <h2 id="page-heading">
+        <span>Alberos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-albero" [routerLink]="['/albero/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Albero
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="alberos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Entityid</span></th>
+            <th><span>Id Pianta</span></th>
+            <th><span>Codice Area</span></th>
+            <th><span>Nome Comune</span></th>
+            <th><span>Classe Altezza</span></th>
+            <th><span>Altezza</span></th>
+            <th><span>Diametro Fusto</span></th>
+            <th><span>Diametro</span></th>
+            <th><span>Wkt</span></th>
+            <th><span>Aggiornamento</span></th>
+            <th><span>Nota</span></th>
+            <th><span>Tipo Di Suolo</span></th>
+            <th><span>Data Impianto</span></th>
+            <th><span>Data Abbattimento</span></th>
+            <th><span>Data Ultimo Aggiornamento</span></th>
+            <th><span>Data Prima Rilevazione</span></th>
+            <th><span>Note Tecniche</span></th>
+            <th><span>Posizione</span></th>
+            <th><span>Deleted</span></th>
+            <th><span>Essenza</span></th>
+            <th><span>Modificato Da</span></th>
+            <th><span>Main</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let albero of alberos ;trackBy: trackId">
+                <td><a [routerLink]="['/albero', albero.id, 'view' ]">{{albero.id}}</a></td>
+                <td>{{albero.entityid}}</td>
+                <td>{{albero.idPianta}}</td>
+                <td>{{albero.codiceArea}}</td>
+                <td>{{albero.nomeComune}}</td>
+                <td>{{albero.classeAltezza}}</td>
+                <td>{{albero.altezza}}</td>
+                <td>{{albero.diametroFusto}}</td>
+                <td>{{albero.diametro}}</td>
+                <td>{{albero.wkt}}</td>
+                <td>{{albero.aggiornamento}}</td>
+                <td>{{albero.nota}}</td>
+                <td>{{albero.tipoDiSuolo}}</td>
+                <td>{{albero.dataImpianto | date:'medium'}}</td>
+                <td>{{albero.dataAbbattimento | date:'medium'}}</td>
+                <td>{{albero.dataUltimoAggiornamento | date:'medium'}}</td>
+                <td>{{albero.dataPrimaRilevazione | date:'medium'}}</td>
+                <td>{{albero.noteTecniche}}</td>
+                <td>{{albero.posizione}}</td>
+                <td>{{albero.deleted}}</td>
+                <td>
+                    <div *ngIf="albero.essenzaId">
+                        <a [routerLink]="['../essenza', albero.essenzaId , 'view' ]" >{{albero.essenzaNomeComune}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{albero.modificatoDaEmail}}
+                </td>
+                <td>
+                    <div *ngIf="albero.mainId">
+                        <a [routerLink]="['../albero', albero.mainId , 'view' ]" >{{albero.mainId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/albero', albero.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/albero', albero.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'albero/'+ albero.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity EssenzaAudit.
+    -->
+    <changeSet id="20190511123229-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="essenza_id"
+                                 baseTableName="essenza_audit"
+                                 constraintName="fk_essenza_audit_essenza_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="essenza"/>
+
+        <addForeignKeyConstraint baseColumnNames="modificato_da_id"
+                                 baseTableName="essenza_audit"
+                                 constraintName="fk_essenza_audit_modificato_da_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+    </changeSet>
+</databaseChangeLog>

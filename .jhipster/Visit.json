@@ -1,0 +1,95 @@
+{
+    "name": "Visit",
+    "fields": [
+        {
+            "fieldName": "lastLat",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "lastLon",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "exitPoiId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "maxVisitTime",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "startTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "modifiedDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "maxVisitLengthMeters",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "inProgress",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "difficulty",
+            "fieldType": "VisitDifficulty",
+            "fieldValues": "LOW,MEDIUM,NO_LIMIT"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "startPoint",
+            "otherEntityName": "stop",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "visit"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "endPoint",
+            "otherEntityName": "stop",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "visit"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "stops",
+            "otherEntityName": "stop",
+            "otherEntityRelationshipName": "visit"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "eventAndlocation",
+            "otherEntityName": "eventAndLocation",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180819174327",
+    "entityTableName": "visit",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,56 @@
+{
+    "name": "Email",
+    "fields": [
+        {
+            "fieldName": "from",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "to",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "sesMessageId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "EmailStatus",
+            "fieldValues": "SUCCESS,FAILED"
+        },
+        {
+            "fieldName": "htmlBody",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20000
+        },
+        {
+            "fieldName": "textBody",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20000
+        },
+        {
+            "fieldName": "subject",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20210620131537",
+    "entityTableName": "email",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

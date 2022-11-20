@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="visit">
+            <h2><span>Visit</span> {{visit.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Last Lat</span></dt>
+                <dd>
+                    <span>{{visit.lastLat}}</span>
+                </dd>
+                <dt><span>Last Lon</span></dt>
+                <dd>
+                    <span>{{visit.lastLon}}</span>
+                </dd>
+                <dt><span>Exit Poi Id</span></dt>
+                <dd>
+                    <span>{{visit.exitPoiId}}</span>
+                </dd>
+                <dt><span>Max Visit Time</span></dt>
+                <dd>
+                    <span>{{visit.maxVisitTime}}</span>
+                </dd>
+                <dt><span>Start Time</span></dt>
+                <dd>
+                    <span>{{visit.startTime}}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{visit.createdDate}}</span>
+                </dd>
+                <dt><span>Modified Date</span></dt>
+                <dd>
+                    <span>{{visit.modifiedDate}}</span>
+                </dd>
+                <dt><span>Max Visit Length Meters</span></dt>
+                <dd>
+                    <span>{{visit.maxVisitLengthMeters}}</span>
+                </dd>
+                <dt><span>Active</span></dt>
+                <dd>
+                    <span>{{visit.active}}</span>
+                </dd>
+                <dt><span>In Progress</span></dt>
+                <dd>
+                    <span>{{visit.inProgress}}</span>
+                </dd>
+                <dt><span>Difficulty</span></dt>
+                <dd>
+                    <span>{{visit.difficulty}}</span>
+                </dd>
+                <dt><span>Start Point</span></dt>
+                <dd>
+                    <div *ngIf="visit.startPointId">
+                        <a [routerLink]="['/stop', visit.startPointId, 'view']">{{visit.startPointId}}</a>
+                    </div>
+                </dd>
+                <dt><span>End Point</span></dt>
+                <dd>
+                    <div *ngIf="visit.endPointId">
+                        <a [routerLink]="['/stop', visit.endPointId, 'view']">{{visit.endPointId}}</a>
+                    </div>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{visit.userId}}
+                </dd>
+                <dt><span>Event Andlocation</span></dt>
+                <dd>
+                    <div *ngIf="visit.eventAndlocationId">
+                        <a [routerLink]="['/event-and-location', visit.eventAndlocationId, 'view']">{{visit.eventAndlocationId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/visit', visit.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

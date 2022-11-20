@@ -1,0 +1,8 @@
+pg_restore: [archiviatore (db)] Errore nella voce TOC 3224; 0 0 ACL SCHEMA public dawitabate
+pg_restore: [archiviatore (db)] could not execute query: ERROR:  role "rdsadmin" does not exist
+    Il comando era: REVOKE ALL ON SCHEMA public FROM rdsadmin;
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+GRANT ALL ON SCHEMA public TO dawitabate;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+ATTENZIONE: errore ignorato durante il ripristino: 1
+[2020-02-01 12:54:37] pg_restore process finished

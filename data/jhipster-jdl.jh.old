@@ -1,0 +1,91 @@
+
+DEFAULT_MAX_LENGTH = 20000
+VERY_LARGE_LENGTH = 200000
+
+entity SocialUser {
+    firstName String,
+    lastName String,
+    name String,
+    email String,
+	photoUrl String,
+    authType AuthType,
+    langKey String,
+    username String,
+    providerId String
+}
+
+entity Indoor{
+	zoneName String
+}
+
+entity Gps {
+    latitude BigDecimal,
+    longitude BigDecimal
+}
+entity QrCode {
+	qrCode String,
+    latitude BigDecimal,
+    longitude BigDecimal
+}
+entity Beacon{
+	beaconId String,
+    latitude BigDecimal,
+    longitude BigDecimal
+}
+entity Client{
+    name String
+}
+
+entity PoiField{
+    name String required,
+    fieldType FieldType required
+}
+
+entity Poi{
+    category String required,
+    iconUrl String required
+}
+
+entity PoiValue{
+	value String
+    language LanguageType
+}
+entity Image {
+	name String required,
+    bucket String required,
+	active Boolean,
+    modifiedDate ZonedDateTime,
+}
+
+enum AuthType {
+    FB, GOOGLE, EMAIL
+}
+
+enum FieldType {
+	INT, STRING, DATE
+}
+enum LanguageType {
+	EN, IT, FR, DE
+}
+
+relationship OneToMany {
+    Poi{images} to Image{poi},
+    Client{pois} to Poi{client},
+    Poi{poiFields} to PoiField{poi},
+    Poi{indoor} to Indoor{poi},
+    Poi{qrCpde} to QrCode{poi},
+    Poi{beacon} to Beacon{poi},
+    Poi{gps} to Gps{poi},
+    PoiField{poiValue} to PoiValue{poiField}
+
+}
+relationship ManyToMany {
+    Client{users} to User{client}
+
+
+}
+relationship ManyToOne {
+    SocialUser{user} to User
+}
+
+service all with serviceClass

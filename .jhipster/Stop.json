@@ -1,0 +1,57 @@
+{
+    "name": "Stop",
+    "fields": [
+        {
+            "fieldName": "poiId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "reached",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "startTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "endTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "stopType",
+            "fieldType": "StopType",
+            "fieldValues": "REGULAR,URGENT,SECONDARY,MY_POSITION",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "lat",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "lon",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "visit",
+            "otherEntityName": "visit",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180819174328",
+    "entityTableName": "stop",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="essenza">
+            <h2><span>Essenza</span> {{essenza.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Id Comune</span></dt>
+                <dd>
+                    <span>{{essenza.idComune}}</span>
+                </dd>
+                <dt><span>Tipo Verde</span></dt>
+                <dd>
+                    <span>{{essenza.tipoVerde}}</span>
+                </dd>
+                <dt><span>Genere E Specie</span></dt>
+                <dd>
+                    <span>{{essenza.genereESpecie}}</span>
+                </dd>
+                <dt><span>Nome Comune</span></dt>
+                <dd>
+                    <span>{{essenza.nomeComune}}</span>
+                </dd>
+                <dt><span>Valore Sicurezza</span></dt>
+                <dd>
+                    <span>{{essenza.valoreSicurezza}}</span>
+                </dd>
+                <dt><span>Valore Bio Ambientale</span></dt>
+                <dd>
+                    <span>{{essenza.valoreBioAmbientale}}</span>
+                </dd>
+                <dt><span>Provenienza</span></dt>
+                <dd>
+                    <span>{{essenza.provenienza}}</span>
+                </dd>
+                <dt><span>Descrizione</span></dt>
+                <dd>
+                    <span>{{essenza.descrizione}}</span>
+                </dd>
+                <dt><span>Usie Curiosita</span></dt>
+                <dd>
+                    <span>{{essenza.usieCuriosita}}</span>
+                </dd>
+                <dt><span>Genere</span></dt>
+                <dd>
+                    <span>{{essenza.genere}}</span>
+                </dd>
+                <dt><span>Specie</span></dt>
+                <dd>
+                    <span>{{essenza.specie}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/essenza', essenza.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

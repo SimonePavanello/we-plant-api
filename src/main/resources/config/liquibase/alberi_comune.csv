@@ -1,0 +1,3 @@
+id;entityid;id_pianta;codice_area;nome_comune;classe_altezza;altezza;diametro_fusto;diametro;wkt;aggiornamento;main_id;essenza_id;data_ultimo_aggiornamento;note_tecniche
+2;7248;10016;10001;Calocedrus Decurrens;3;30;3;0.3;POINT (10.9932569486537 45.4383581048046);2018-10-09 16:15:00;2;37;2018-10-09 00:00:00;diametro e altezza calcolati a partire dalla classe altezza e classe diametro
+3;7214;10017;10001;Pinus Pinea;2;20;2;0.2;POINT (10.9933469265917 45.4384314184272);2018-10-09 16:15:00;3;164;2018-10-09 00:00:00;diametro e altezza calcolati a partire dalla classe altezza e classe diametro

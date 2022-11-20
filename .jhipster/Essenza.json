@@ -1,0 +1,70 @@
+{
+    "name": "Essenza",
+    "fields": [
+        {
+            "fieldName": "idComune",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipoVerde",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "genereESpecie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nomeComune",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valoreSicurezza",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valoreBioAmbientale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "provenienza",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descrizione",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20000
+        },
+        {
+            "fieldName": "usieCuriosita",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20000
+        },
+        {
+            "fieldName": "genere",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "specie",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190428094709",
+    "entityTableName": "essenza",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

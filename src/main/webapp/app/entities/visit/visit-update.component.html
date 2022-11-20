@@ -1,0 +1,116 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-visit-heading">Create or edit a Visit</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!visit.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="visit.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastLat">Last Lat</label>
+                    <input type="number" class="form-control" name="lastLat" id="field_lastLat"
+                        [(ngModel)]="visit.lastLat" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastLon">Last Lon</label>
+                    <input type="number" class="form-control" name="lastLon" id="field_lastLon"
+                        [(ngModel)]="visit.lastLon" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_exitPoiId">Exit Poi Id</label>
+                    <input type="text" class="form-control" name="exitPoiId" id="field_exitPoiId"
+                        [(ngModel)]="visit.exitPoiId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_maxVisitTime">Max Visit Time</label>
+                    <input type="number" class="form-control" name="maxVisitTime" id="field_maxVisitTime"
+                        [(ngModel)]="visit.maxVisitTime" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_startTime">Start Time</label>
+                    <div class="d-flex">
+                        <input id="field_startTime" type="datetime-local" class="form-control" name="startTime" [(ngModel)]="startTime"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="createdDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modifiedDate">Modified Date</label>
+                    <div class="d-flex">
+                        <input id="field_modifiedDate" type="datetime-local" class="form-control" name="modifiedDate" [(ngModel)]="modifiedDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_maxVisitLengthMeters">Max Visit Length Meters</label>
+                    <input type="number" class="form-control" name="maxVisitLengthMeters" id="field_maxVisitLengthMeters"
+                        [(ngModel)]="visit.maxVisitLengthMeters" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_active">Active</label>
+                    <input type="checkbox" class="form-control" name="active" id="field_active"
+                        [(ngModel)]="visit.active" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_inProgress">In Progress</label>
+                    <input type="checkbox" class="form-control" name="inProgress" id="field_inProgress"
+                        [(ngModel)]="visit.inProgress" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_difficulty">Difficulty</label>
+                    <select class="form-control" name="difficulty" [(ngModel)]="visit.difficulty" id="field_difficulty" >
+                        <option value="LOW">LOW</option>
+                        <option value="MEDIUM">MEDIUM</option>
+                        <option value="NO_LIMIT">NO_LIMIT</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_startPoint">Start Point</label>
+                    <select class="form-control" id="field_startPoint" name="startPoint" [(ngModel)]="visit.startPointId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="stopOption.id" *ngFor="let stopOption of startpoints; trackBy: trackStopById">{{stopOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_endPoint">End Point</label>
+                    <select class="form-control" id="field_endPoint" name="endPoint" [(ngModel)]="visit.endPointId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="stopOption.id" *ngFor="let stopOption of endpoints; trackBy: trackStopById">{{stopOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="visit.userId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_eventAndlocation">Event Andlocation</label>
+                    <select class="form-control" id="field_eventAndlocation" name="eventAndlocation" [(ngModel)]="visit.eventAndlocationId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="eventAndLocationOption.id" *ngFor="let eventAndLocationOption of eventandlocations; trackBy: trackEventAndLocationById">{{eventAndLocationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+{
+    "name": "EventAndLocation",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "administeredEventsAndLocations",
+            "relationshipName": "adminUsers",
+            "otherEntityName": "ninoUser",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "eventsAndlocations",
+            "relationshipName": "pois",
+            "otherEntityName": "poi",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190520151034",
+    "entityTableName": "event_and_location",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

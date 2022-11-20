@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity EssenzaAudit.
+    -->
+    <changeSet id="20190511123229-1" author="jhipster">
+        <createTable tableName="essenza_audit">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id_comune" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tipo_verde" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="genere_e_specie" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="nome_comune" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valore_sicurezza" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valore_bio_ambientale" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="provenienza" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="descrizione" type="varchar(20000)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="usie_curiosita" type="varchar(20000)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="genere" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="specie" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_ultimo_aggiornamento" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="essenza_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="modificato_da_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="essenza_audit" columnName="data_ultimo_aggiornamento" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>
