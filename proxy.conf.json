@@ -1,6 +1,6 @@
 {
     "*": {
-        "target": "http://maven",
+        "target": "http://maven:8080",
         "secure": false,
         "loglevel": "debug"
     }
